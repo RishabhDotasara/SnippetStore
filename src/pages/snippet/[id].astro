@@ -1,0 +1,51 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { SnippetInfo } from '../../components/snippets/SnippetInfo';
+import { CodeBlock } from '../../components/snippets/CodeBlock';
+import { snippets } from '../../data/snippets';
+import type { Snippet } from '../../types/snippet';
+
+export const prerender = false;
+
+interface Props {
+  id:string
+}
+const {id} = Astro.params;
+const snippet = snippets.find((s) => s.id === parseInt(id || "")) as Snippet;
+console.log(snippet)
+// Handle block type snippets
+const isBlock = snippet.type === 'block';
+---
+
+<MainLayout title={`${snippet.title} - SnippetStore`} showSearch={false}>
+  <div class="max-w-4xl mx-auto px-4 py-8 space-y-6">
+    <SnippetInfo snippet={snippet} client:load />
+    
+    <div class="space-y-4">
+      {isBlock ? (
+        // Render multiple snippets for a block
+        snippet.snippets?.map((subSnippet) => (
+          <div class="space-y-2">
+            <h3 class="text-lg font-medium text-gray-500 dark:text-white pb-2">
+              {subSnippet.title}
+            </h3>
+            <CodeBlock
+              client:load
+              code={subSnippet.code}
+              language={subSnippet.language}
+              filename={subSnippet.filename}
+            />
+          </div>
+        ))
+      ) : (
+        // Render single snippet
+        <CodeBlock
+          client:load
+          code={snippet.code}
+          language={snippet.language}
+          filename={snippet.filename}
+        />
+      )}
+    </div>
+  </div>
+</MainLayout>

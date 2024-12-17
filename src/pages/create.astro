@@ -1,0 +1,16 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { CreateSnippetForm } from '../components/snippets/create/CreateSnippetForm';
+---
+
+<MainLayout title="Create New Snippet - SnippetStore" showSearch={false}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Create New Snippet</h1>
+      <p class="mt-2 text-gray-600 dark:text-gray-400">Share your code snippets with the community</p>
+    </div>
+
+    <CreateSnippetForm client:load />
+  </div>
+</MainLayout>
+---

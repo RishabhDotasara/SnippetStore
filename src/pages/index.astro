@@ -1,43 +1,19 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { SearchBar } from '../components/SearchBar';
+import MainLayout from '../layouts/MainLayout.astro';
 import { TrendingTags } from '../components/TrendingTags';
 import { RecentSnippets } from '../components/RecentSnippets';
-import { Footer } from '../components/Footer';
 ---
 
-<Layout title="SnippetStore - Find and Share Code Snippets">
-  <main class="min-h-screen bg-gray-50 dark:bg-gray-900">
-    <!-- Hero Section -->
-    <div class="w-full bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
-      <div class="max-w-7xl mx-auto px-4 py-8">
-        <!-- Logo -->
-        <div class="flex justify-center mb-8">
-          <h1 class="text-4xl font-bold text-primary-600 dark:text-primary-400">
-            Snippet<span class="text-gray-900 dark:text-white">Store</span>
-          </h1>
-        </div>
-
-        <!-- Search Section -->
-        <div class="flex justify-center mb-12">
-          <SearchBar client:load />
-        </div>
-      </div>
+<MainLayout title="SnippetStore - Find and Share Code Snippets">
+  <div class="max-w-7xl mx-auto px-4 py-12 space-y-12">
+    {/* Trending Tags */}
+    <div class="flex justify-center">
+      <TrendingTags client:load />
     </div>
 
-    <!-- Content Section -->
-    <div class="max-w-7xl mx-auto px-4 py-12 space-y-12">
-      <!-- Trending Tags -->
-      <div class="flex justify-center">
-        <TrendingTags client:load />
-      </div>
-
-      <!-- Recent Snippets -->
-      <div class="flex justify-center">
-        <RecentSnippets client:load />
-      </div>
+    {/* Recent Snippets */}
+    <div class="flex justify-center">
+      <RecentSnippets client:load />
     </div>
-
-    <Footer />
-  </main>
-</Layout>
+  </div>
+</MainLayout>

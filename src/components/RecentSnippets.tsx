@@ -7,10 +7,9 @@ const recentSnippets: Snippet[] = [
   {
     id: 1,
     title: 'React useEffect Cleanup',
-    language: 'typescript',
+    language: 'react',
     type: 'snippet',
     upvotes: 42,
-    downvotes:15,
     version:"17.0.2",
     createdAt: new Date('2023-10-01'),
     code: '// Code here'
@@ -18,10 +17,9 @@ const recentSnippets: Snippet[] = [
   {
     id: 2,
     title: 'React Component Collection',
-    language: 'typescript',
+    language: 'react',
     type: 'block',
     upvotes: 85,
-    downvotes:15,
     version:"17.0.2",
     createdAt: new Date('2023-09-30'),
     snippetCount: 5,
@@ -30,11 +28,10 @@ const recentSnippets: Snippet[] = [
   {
     id: 3,
     title: 'CSS Grid Layout',
-    language: 'css',
+    language: 'css3',
     type: 'snippet',
     upvotes: 28,
     version:"17.0.2",
-    downvotes:15,
     createdAt: new Date('2023-09-29'),
     code: '/* Code here */'
   },
@@ -49,6 +46,7 @@ export const RecentSnippets = () => {
           <SnippetCard key={snippet.id} snippet={snippet} />
         ))}
       </div>
+      <a href='#' className='hover:underline block text-center pt-4'>View More</a>
     </div>
   );
 };

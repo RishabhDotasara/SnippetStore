@@ -1,0 +1,27 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { SearchFilters } from '../components/search/SearchFilters';
+import { RecentSnippets } from '../components/RecentSnippets';
+
+// Get search query from URL
+const searchQuery = Astro.url.searchParams.get('q') || '';
+---
+
+<MainLayout title={`Search Results for "${searchQuery}" - SnippetStore`}>
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex gap-8">
+      {/* Filters Sidebar */}
+      <aside class="hidden md:block">
+        <SearchFilters client:load />
+      </aside>
+
+      {/* Search Results */}
+      <div class="flex-1">
+        <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-6">
+          Search Results for "{searchQuery}"
+        </h2>
+        <RecentSnippets client:load />
+      </div>
+    </div>
+  </div>
+</MainLayout>

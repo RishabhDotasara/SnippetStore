@@ -5,10 +5,11 @@ export interface BaseSnippet {
   title: string;
   language: string;
   upvotes: number;
-  downvotes: number;
+  version:string;
   type: SnippetType;
-  version:string,
   createdAt: Date;
+  code?: string;
+  filename?: string;
 }
 
 export interface SingleSnippet extends BaseSnippet {
