@@ -1,6 +1,6 @@
 
-import { TrendingTags } from '../TrendingTags'
 import { RecentSnippets } from '../RecentSnippets'
+import { TrendingTags } from '../trending/TrendingTags'
 
 export default function Home() {
   return (

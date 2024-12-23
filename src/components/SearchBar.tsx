@@ -12,7 +12,7 @@ export const SearchBar = () => {
   const [query, setQuery] = useState('');
   const [showRecommendations, setShowRecommendations] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
-  const [fastSearch, setFastSearch] = useState(false);
+  const [fastSearch, setFastSearch] = useState(true);
   const {getRecommendations ,recommendations, loading } = useRecommendations(query);
   const navigate = useNavigate()
 
@@ -34,12 +34,13 @@ export const SearchBar = () => {
     console.log('Searching for:', query);
     try 
     {
-      setShowRecommendations(false)
+      // setShowRecommendations(false)
+      // console.log("Fast: ", fastSearch);
       navigate(`/search?q=${query}&fast=${fastSearch}`);
     }
     catch(err)
     {
-      toast.error("Error Performing Search, Please try again! "+ err);
+      toast.error("Error Performing Search, Please try again! ");
     }
   };
 
@@ -50,7 +51,10 @@ export const SearchBar = () => {
   };
 
   const handleFastSearchToggle = () => {
-    setFastSearch(!fastSearch);
+    setFastSearch(true);
+    toast("Detailed Search Coming Soon!", {
+      icon: 'ℹ️',
+    })
   }
 
   return (

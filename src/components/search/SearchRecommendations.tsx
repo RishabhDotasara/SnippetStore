@@ -1,5 +1,4 @@
-import React from 'react';
-import type { Snippet } from '../../types/snippet';
+import { Snippet } from '@rishabhdotasara/snippetstore-types';
 import { RecommendationItem } from './RecommendationItem';
 
 interface SearchRecommendationsProps {

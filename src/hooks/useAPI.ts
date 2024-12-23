@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { auth } from "../../firebase.config";
 import toast from "react-hot-toast";
-import { onAuthStateChanged, signOut, User } from "firebase/auth";
+import { onAuthStateChanged} from "firebase/auth";
 
 export const useAPI = ()=>{
     // const [res,setRes] = useState(null);

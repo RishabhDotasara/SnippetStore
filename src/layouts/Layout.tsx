@@ -16,7 +16,11 @@ const Layout = ({ title, showSearch = true, children }: Props) => {
         <title>{title}</title>
       </head>
       <Header showSearch={showSearch} />
-      <Toaster />
+      <Toaster 
+        position='top-center'
+        gutter={8}
+
+      />
       <main className="flex-1">{children}</main>
       <Footer />
     </div>

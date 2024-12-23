@@ -1,7 +1,6 @@
-import React from "react";
-import type { Snippet } from "../../types/snippet";
 import { Badge } from "../ui/Badge";
 import LanguageIcon from "../icons/LanguageIcon";
+import { Snippet } from "@rishabhdotasara/snippetstore-types";
 
 interface RecommendationItemProps {
   item: Snippet;
@@ -13,7 +12,6 @@ export const RecommendationItem = ({
   onSelect,
 }: RecommendationItemProps) => {
   
-  const link = item.type == "block" ? `/block/${item.id}` : `/snippet/${item.id}`;
 
   return (
   <li

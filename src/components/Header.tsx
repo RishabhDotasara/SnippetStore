@@ -12,7 +12,7 @@ interface HeaderProps {
 }
 
 export const Header = ({ showSearch = true }: HeaderProps) => {
-
+  
   return (
     <header className="w-full bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
       <div className="max-w-8xl mx-auto px-4 py-4 flex flex-col">

@@ -1,11 +1,15 @@
 import React, { useEffect } from "react";
 import { useAPI } from "../../hooks/useAPI";
-import toast, { LoaderIcon } from "react-hot-toast";
-import { Snippet } from "../../types/snippet";
+import toast from "react-hot-toast";
+
 import { SnippetInfo } from "../snippets/SnippetInfo";
 import { CodeBlock } from "../snippets/CodeBlock";
-import { Block, BlockSnippet } from "../../types/block";
+
 import { CodeIcon } from "../icons/CodeIcon";
+import {
+  BlockSnippet,
+  SnippetBlock,
+} from "@rishabhdotasara/snippetstore-types";
 
 type getBlockProps = {
   id: string;
@@ -13,7 +17,7 @@ type getBlockProps = {
 };
 
 export default function GetBlockById({ id, title }: getBlockProps) {
-  const [block, setBlock] = React.useState<Block | null>(null);
+  const [block, setBlock] = React.useState<SnippetBlock | null>(null);
   const { makeRequest } = useAPI();
 
   const getBlock = async () => {
@@ -23,7 +27,12 @@ export default function GetBlockById({ id, title }: getBlockProps) {
         return;
       }
 
-      const block: Block = await makeRequest(`/code/block/${id}`, "GET", {}, false);
+      const block: SnippetBlock = await makeRequest(
+        `/code/block/${id}`,
+        "GET",
+        {},
+        false
+      );
       console.log(block);
       setBlock(block);
     } catch (err) {
@@ -44,17 +53,18 @@ export default function GetBlockById({ id, title }: getBlockProps) {
             <CodeIcon className="w-10 h-10 text-gray-400" />
           </div>
         </div>
-        <p className="text-gray-500 dark:text-gray-400 text-lg">Loading code block...</p>
+        <p className="text-gray-500 dark:text-gray-400 text-lg">
+          Loading code block...
+        </p>
       </div>
     );
   }
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 space-y-12">
-      <SnippetInfo snippet={block as unknown as Snippet} />
+      <SnippetInfo snippet={block as unknown as SnippetBlock} />
       {block?.snippets.map((snippet: BlockSnippet, index: number) => (
         <div key={index} className="space-y-3">
-          
           <CodeBlock
             title={snippet.title}
             code={snippet.code}
@@ -67,4 +77,3 @@ export default function GetBlockById({ id, title }: getBlockProps) {
     </div>
   );
 }
-

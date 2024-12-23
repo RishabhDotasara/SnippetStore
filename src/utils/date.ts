@@ -1,4 +1,5 @@
-import { DateTimeFormatOptions } from '../types/date';
+import { DateTimeFormatOptions } from "@rishabhdotasara/snippetstore-types";
+
 
 export const DEFAULT_DATE_FORMAT: DateTimeFormatOptions = {
   month: 'short',

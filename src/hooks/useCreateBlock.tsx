@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import type { Block, BlockSnippet } from '../types/block';
+
 import { useAPI } from './useAPI';
+import { BlockSnippet, SnippetBlock } from '@rishabhdotasara/snippetstore-types';
 
 const initialSnippet: BlockSnippet = {
   title: '',
@@ -9,16 +10,20 @@ const initialSnippet: BlockSnippet = {
   filename:''
 };
 
-const initialState: Block = {
+const initialState: SnippetBlock = {
   title: '',
   description: '',
   snippets: [],
   tags: [],
-  language:''
+  language:'',
+  type:"block",
+  createdAt:new Date(),
+  snippetCount:0,
+  upvotes:0
 };
 
 export const useCreateBlock = () => {
-  const [block, setBlock] = useState<Block>(initialState);
+  const [block, setBlock] = useState<SnippetBlock>(initialState);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const {makeRequest} = useAPI();
 
@@ -48,7 +53,7 @@ export const useCreateBlock = () => {
   };
 
   const updateTags = (tags: string[]) => {
-    setBlock((prev) => ({ ...prev, tags }));
+    setBlock((prev:any) => ({ ...prev, tags }));
   };
 
   const updatePrivacy = (isPrivate: boolean) => {

@@ -5,7 +5,7 @@ interface SwitchProps {
   onChange: (checked: boolean) => void;
 }
 
-export const Switch = ({ checked, onChange }: SwitchProps) => {
+export const Switch = ({ checked, onChange, ...rest }: SwitchProps) => {
   return (
     <button
       type="button"
@@ -17,6 +17,7 @@ export const Switch = ({ checked, onChange }: SwitchProps) => {
         transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
         ${checked ? 'bg-primary-600' : 'bg-gray-200 dark:bg-gray-700'}
       `}
+      {...rest}
     >
       <span
         className={`

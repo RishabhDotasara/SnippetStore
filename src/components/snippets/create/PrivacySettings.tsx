@@ -1,4 +1,3 @@
-import React from 'react';
 import { Switch } from '../../ui/Switch';
 
 interface PrivacySettingsProps {

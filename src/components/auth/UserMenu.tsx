@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as Avatar from "@radix-ui/react-avatar";
 import {
@@ -10,11 +10,10 @@ import {
 import { auth, githubProvider } from "../../../firebase.config";
 import toast, { LoaderIcon } from "react-hot-toast";
 import { AddSnippetButton } from "../AddSnippetButton";
-import Logout from "../icons/Logout";
-import UserIcon from "../icons/UserIcon";
 import { Button } from "../ui/Button";
 import GithubIcon from "../icons/GithubIcon";
 import { Link } from "react-router-dom";
+import { LogOutIcon, User2Icon } from "lucide-react";
 
 export const UserMenu = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -98,9 +97,9 @@ export const UserMenu = () => {
                     {user.email}
                   </p>
                 </div>
-                <DropdownMenu.Item className="px-3 py-2 flex  items-center justify-start gap-2  outline-none text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer">
-                  <Link to="/profile/sdfsdf">
-                    <UserIcon className="h-4 w-4" />
+                <DropdownMenu.Item className="px-3 py-2 flexoutline-none text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer">
+                  <Link to="/profile/sdfsdf" className="flex items-center gap-2">
+                    <User2Icon className="h-4 w-4 " />
                     Profile
                   </Link>
                 </DropdownMenu.Item>
@@ -108,7 +107,7 @@ export const UserMenu = () => {
                   className="px-3 py-2 flex  items-center justify-start gap-2 outline-none text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer"
                   onClick={handleLogout}
                 >
-                  <Logout className="h-4 w-4" />
+                  <LogOutIcon className="h-4 w-4" />
                   Sign Out
                 </DropdownMenu.Item>
               </DropdownMenu.Content>

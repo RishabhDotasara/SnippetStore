@@ -1,10 +1,10 @@
 import { Badge } from "../ui/Badge";
 import { getRelativeTime } from "../../utils/date";
-import type { Snippet } from "../../types/snippet";
 import { VoteButtons } from "./VoteButtons";
 import LanguageIcon from "../icons/LanguageIcon";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Snippet } from "@rishabhdotasara/snippetstore-types";
 
 interface SnippetInfoProps {
   snippet: Snippet;
@@ -45,7 +45,7 @@ export const SnippetInfo = ({ snippet }: SnippetInfoProps) => {
         <div className="flex flex-wrap gap-2">
 
           {/* <span className="text-">Tags:</span> */}
-          {snippet.tags?.map((tag) => (
+          {snippet.tags?.map((tag:any) => (
             <Badge 
               key={tag} 
               variant="primary" 

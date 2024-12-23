@@ -2,8 +2,9 @@ import React from "react";
 
 import { CalendarIcon } from "../icons/CalendarIcon";
 import { formatDate } from "../../utils/date";
-import type { User } from "../../types/user";
+
 import GithubIcon from "../icons/GithubIcon";
+import { User } from "firebase/auth";
 
 interface ProfileHeaderProps {
   user: User;
@@ -17,19 +18,19 @@ export const ProfileHeader = ({ user }: ProfileHeaderProps) => {
         <div className="flex-1 border-b-2 dark:border-b-gray-600 flex gap-4 pb-8">
           {/* Avatar */}
           <img
-            src={user.avatarUrl}
-            alt={user.name}
+            src={user.photoURL || ""}
+            alt={user.displayName || "User avatar"}
             className="w-24 h-24 rounded-full"
           />
           <div>
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-              {user.name}
+              {user.displayName}
             </h1>
-            <p className="text-gray-600 dark:text-gray-400">@{user.username}</p>
+            <p className="text-gray-600 dark:text-gray-400">{user.email}</p>
 
             <div className="mt-4 flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
               <a
-                href={user.githubUrl}
+                href={user.providerData[0].providerId}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-primary-600 transition-colors "
@@ -37,16 +38,16 @@ export const ProfileHeader = ({ user }: ProfileHeaderProps) => {
                 <GithubIcon className="w-6 h-6" />
                 <span className="hidden md:inline-block">GitHub Profile</span>
               </a>
-              <span className="flex items-center gap-2">
+              {/* <span className="flex items-center gap-2">
                 <CalendarIcon className="w-4 h-4" />
-                <span>Joined {formatDate(user.joinedDate)}</span>
-              </span>
+                <span>Joined {formatDate(user.metadata.creationTime)}</span>
+              </span> */}
             </div>
           </div>
         </div>
 
         {/* Stats Overview */}
-        <div className="flex gap-6 w-full justify-center">
+        {/* <div className="flex gap-6 w-full justify-center">
           <div className="text-center">
             <div className="text-2xl font-bold text-gray-900 dark:text-white">
               {user.stats.totalSnippets}
@@ -71,7 +72,7 @@ export const ProfileHeader = ({ user }: ProfileHeaderProps) => {
               Upvotes
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

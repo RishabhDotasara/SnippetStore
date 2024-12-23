@@ -1,8 +1,8 @@
-import type { Snippet } from "../../types/snippet";
 import { Badge } from "../ui/Badge";
 import { getRelativeTime } from "../../utils/date";
 import { VoteButtons } from "./VoteButtons";
 import { Link } from "react-router-dom";
+import { Snippet } from "@rishabhdotasara/snippetstore-types";
 
 interface SnippetCardProps {
   snippet: Snippet;
@@ -36,9 +36,9 @@ export const SnippetCard = ({ snippet, isRecom = false }: SnippetCardProps) => {
             <Badge variant="secondary" className="capitalize">
               {snippet.type}
             </Badge>
-            <Badge variant="primary" className="capitalize">
+            {/* <Badge variant="primary" className="capitalize">
               v{snippet.version}
-            </Badge>
+            </Badge> */}
           </div>
         </div>
 

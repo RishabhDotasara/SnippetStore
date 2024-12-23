@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Select } from '../../ui/Select';
 import { Badge } from '../../ui/Badge';
+import { TAG_OPTIONS } from '../../../constants/tags';
 
 interface TagInputProps {
   tags: string[];
@@ -7,63 +9,105 @@ interface TagInputProps {
 }
 
 export const TagInput = ({ tags, onChange }: TagInputProps) => {
-  const [input, setInput] = useState('');
+  const handleTagChange = (category: keyof typeof TAG_OPTIONS, value: string) => {
+    if (!value) return;
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ',') {
-      e.preventDefault();
-      const newTag = input.trim();
-      if (newTag && !tags.includes(newTag)) {
-        onChange([...tags, newTag]);
-        setInput('');
-      }
-    }
+    // Remove any existing tag from this category
+    const filteredTags = tags.filter(tag => 
+      !TAG_OPTIONS[category].includes(tag as any)
+    );
+    
+    // Add the new tag
+    onChange([...filteredTags, value]);
   };
 
-  const removeTag = (tagToRemove: string) => {
-    onChange(tags.filter((tag) => tag !== tagToRemove));
+  const getSelectedTag = (category: keyof typeof TAG_OPTIONS) => {
+    return tags.find(tag => TAG_OPTIONS[category].includes(tag as any)) || '';
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <div>
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 ">
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
           Tags
         </h2>
         <p className="text-sm text-gray-600 dark:text-gray-400">
-          Add up to 5 tags to help others find your snippet. Do add one as the version number.
+          Select one tag from each category to help others find your snippet
         </p>
       </div>
 
-      <div className="space-y-3">
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="Add tags (press Enter or comma to add)"
-          className="w-full px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-900 dark:text-gray-200"
-          disabled={tags.length >= 5}
-        />
+      <div className="grid gap-6">
+        {/* Community Tag */}
+        <div>
+          <Select
+            label="Community"
+            value={getSelectedTag('community')}
+            onChange={(e) => handleTagChange('community', e.target.value)}
+            required
+          >
+            <option value="">Select a community tag</option>
+            {TAG_OPTIONS.community.map((tag) => (
+              <option key={tag} value={tag}>
+                {tag.charAt(0).toUpperCase() + tag.slice(1)}
+              </option>
+            ))}
+          </Select>
+        </div>
 
-        <div className="flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <Badge
-              key={tag}
-              variant="secondary"
-              className="flex items-center gap-1"
-            >
-              {tag}
-              <button
-                onClick={() => removeTag(tag)}
-                className="ml-1 text-gray-500 hover:text-gray-700"
-              >
-                ×
-              </button>
-            </Badge>
-          ))}
+        {/* Framework Tag */}
+        <div>
+          <Select
+            label="Framework"
+            value={getSelectedTag('framework')}
+            onChange={(e) => handleTagChange('framework', e.target.value)}
+            required
+          >
+            <option value="">Select a framework tag</option>
+            {TAG_OPTIONS.framework.map((tag) => (
+              <option key={tag} value={tag}>
+                {tag.charAt(0).toUpperCase() + tag.slice(1)}
+              </option>
+            ))}
+          </Select>
+        </div>
+
+        {/* Language Tag */}
+        <div>
+          <Select
+            label="Language"
+            value={getSelectedTag('language')}
+            onChange={(e) => handleTagChange('language', e.target.value)}
+            required
+          >
+            <option value="">Select a language tag</option>
+            {TAG_OPTIONS.language.map((tag) => (
+              <option key={tag} value={tag}>
+                {tag.charAt(0).toUpperCase() + tag.slice(1)}
+              </option>
+            ))}
+          </Select>
         </div>
       </div>
+
+      {/* Selected Tags Preview */}
+      {tags.length > 0 && (
+        <div className="mt-4">
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 block">
+            Selected Tags
+          </label>
+          <div className="flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <Badge
+                key={tag}
+                variant="secondary"
+                className="capitalize"
+              >
+                {tag}
+              </Badge>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

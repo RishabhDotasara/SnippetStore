@@ -1,10 +1,8 @@
-import React from 'react';
-
 
 import { Button } from '../ui/Button';
 import { PlusIcon } from '../icons/PlusIcon';
 import { SnippetEditor } from './SnippetEditor';
-import { BlockSnippet } from '../../types/block';
+import { BlockSnippet } from '@rishabhdotasara/snippetstore-types';
 
 interface SnippetListProps {
   snippets: BlockSnippet[];

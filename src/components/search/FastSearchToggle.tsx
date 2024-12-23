@@ -12,7 +12,6 @@ export function FastSearchToggle({ enabled, onChange }: FastSearchToggleProps) {
       <Switch
         checked={enabled}
         onChange={onChange}
-        className="flex items-center gap-2"
       />
       <Zap
         size={16}

@@ -1,4 +1,3 @@
-import React from 'react';
 import { CodeBlock } from '../CodeBlock';
 import { Input } from '../../ui/Input';
 
@@ -35,6 +34,7 @@ export const CodeEditor = ({ code, language, onChange, filename="file", updateFi
               Preview
             </h3>
             <CodeBlock
+              
               code={code}
               canCopy={false}
               filename={filename}

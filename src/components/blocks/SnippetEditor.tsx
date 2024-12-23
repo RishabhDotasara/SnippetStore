@@ -1,13 +1,8 @@
-import React from 'react';
-
-
 import { Input } from '../ui/Input';
-import { Select } from '../ui/Select';
-import { SUPPORTED_LANGUAGES } from '../../constants/languages';
 import { CodeEditor } from '../snippets/create/CodeEditor';
 import { TrashIcon } from '../icons/TrashIcon';
-import { Snippet } from '../../types/snippet';
-import { BlockSnippet } from '../../types/block';
+import { BlockSnippet } from '@rishabhdotasara/snippetstore-types';
+
 
 interface SnippetEditorProps {
   snippet: BlockSnippet;

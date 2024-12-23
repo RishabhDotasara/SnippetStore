@@ -13,7 +13,6 @@ export const CreateBlockForm = () => {
     updateSnippet,
     removeSnippet,
     updateTags,
-    updatePrivacy,
     isSubmitting,
     handleSubmit,
   } = useCreateBlock();
