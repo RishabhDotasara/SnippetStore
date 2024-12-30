@@ -48,7 +48,7 @@ export const SnippetList = ({
         {snippets.length === 0 && (
           <div className="text-center py-8 bg-gray-50 dark:bg-gray-900 rounded-lg border-2 border-dashed border-gray-200 dark:border-gray-700">
             <p className="text-gray-500 dark:text-gray-400">
-              No snippets added yet. Click "Add Snippet" to get started.
+              No snippets added yet. Click &quot;Add Snippet&quot; to get started.
             </p>
           </div>
         )}

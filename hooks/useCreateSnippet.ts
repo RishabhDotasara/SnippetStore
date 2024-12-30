@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useAPI } from './useAPI';
-import { useNavigate } from 'react-router-dom';
 import { useRouter } from 'next/navigation';
 
 interface SnippetData {

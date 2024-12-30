@@ -32,7 +32,7 @@ export const NotFound = () => {
             Page not found
           </p>
           <p className="text-gray-600 dark:text-gray-400">
-            The page you're looking for seems to have wandered off...
+            The page you&apos;re looking for seems to have wandered off...
           </p>
         </div>
 

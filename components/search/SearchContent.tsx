@@ -23,7 +23,7 @@ export const SearchContent = ({ results, query }: SearchContentProps) => {
   return (
     <div className="space-y-4">
       <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
-        Search Results for "{query}"
+        Search Results for &quot;{query}&quot;
       </h2>
       
       {results.map((result) => (

@@ -1,8 +1,11 @@
+import Loader from '@/components/Loader'
 import Search from '@/components/search-page/Search'
-import React from 'react'
+import React, { Suspense } from 'react'
 
 export default function SearchPage() {
   return (
-    <Search/>
+    <Suspense fallback={<Loader text='Loading...'/>}>
+      <Search/>
+    </Suspense>
   )
 }

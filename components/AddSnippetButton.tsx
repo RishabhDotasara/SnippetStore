@@ -3,7 +3,6 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { PlusIcon } from "./icons/PlusIcon";
 import { CodeIcon } from "./icons/CodeIcon";
 import { BlockIcon } from "./icons/BlockIcon";
-import { useNavigate } from "react-router-dom";
 import { useRouter } from "next/navigation";
 
 export const AddSnippetButton = () => {

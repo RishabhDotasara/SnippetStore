@@ -27,7 +27,7 @@ function Quote() {
   return (
     <figure className="max-w-lg mx-auto my-12 text-center italic">
       <blockquote className="text-lg text-muted-foreground/90">
-        "Great code deserves to be shared"
+      &quot;Great code deserves to be shared&quot;
       </blockquote>
     </figure>
   );

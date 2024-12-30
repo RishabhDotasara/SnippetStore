@@ -1,7 +1,7 @@
 import { onAuthStateChanged, User } from "firebase/auth";
 import { ProfileHeader } from "./ProfileHeader";
 import { useEffect, useState } from "react";
-import { auth } from "../../../firebase.config";
+import { auth } from "@/firebase.config";
 import Loader from "../Loader";
 
 export default function Profile() {

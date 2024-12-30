@@ -25,7 +25,6 @@ export const UserMenu = () => {
       setIsSigningIn(true);
       const res = await signInWithPopup(auth, githubProvider);
       const userToken = await res.user.getIdToken()
-      localStorage.setItem("userToken", userToken);
       console.log(res);
       setIsSigningIn(false);
     } catch (err) {

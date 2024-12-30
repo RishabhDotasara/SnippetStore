@@ -27,7 +27,12 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+        <ThemeProvider 
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <Layout showSearch title="Snippet Store">
             {children}
           </Layout>
